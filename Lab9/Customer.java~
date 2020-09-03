@@ -1,0 +1,52 @@
+import java.util.Scanner;
+/** Customer.java
+  * Lab 9 2019
+  * Shaun Liew
+  */
+
+public class Customer{
+  /** data fields */
+  private boolean child;
+  private boolean student;
+  private String name;
+  private boolean booked;
+  
+  public Customer(){}
+  
+  public Customer(String nameIn, int age, boolean studentIn){
+    name = nameIn;
+    student = studentIn;    
+    if ((age >= 5) && (age <= 16)){
+      child = true;
+    }
+  }
+  
+  public String getName(){
+    return name;
+  }
+  
+  public boolean isChild(){
+    return child;    
+  }
+  
+  public boolean isStudent(){
+    return student;
+  }
+  
+  public void setBooked(){
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Confirm booking for " + getName() + " (Y/N)");
+    String book = scan.nextLine();
+    if(book.equals("Y") || book.equals("y")){
+      booked = true;
+      System.out.println("Booked");
+    }
+    if(book.equals("N") || book.equals("n")){
+      booked = false;
+      System.out.println("Not Booked");
+    }
+  }
+  public boolean isBooked(){
+    return booked;
+  }
+}

@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.Random;
+/**
+ * IntCounterApp.java
+ * Lab 15 2019
+ */
+
+public class IntCounterApp{
+  
+  public static int [] makeArray(){
+    Random gen = new Random();
+    int [] y = new int [gen.nextInt(6) + 5];
+    for(int x = 0; x <= (gen.nextInt(6)+5);x++){
+      y [x] = gen.nextInt(5);
+    }
+    return y;
+  }
+  
+  public static void main(String [] args){
+    Scanner sc = new Scanner(System.in);
+    for(int x = 0; x < 3; x++){
+      System.out.println("\nWhich number do you wish to find?");
+      int input = sc.nextInt();
+        IntCounter g = new IntCounter(makeArray());
+        g.showTarget(input);
+    }
+  }
+}
+

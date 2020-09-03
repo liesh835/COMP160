@@ -1,0 +1,7 @@
+/**
+ * TrafficLightPanel.java
+ * Lab 18 2019
+ */
+
+public class TrafficLightPanel extends JPanel{
+  private JButton redButton, JButton greenButton, JButton amberButton, JLabel lastPressedLabal, JPanel buttonPanel;

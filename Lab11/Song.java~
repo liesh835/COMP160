@@ -1,0 +1,19 @@
+/** 
+ * Song.java
+ * COMP160 2019 Lab 11
+ */
+public class Song{
+  /** data field */
+  private String songLine;
+  
+  public Song(String sLine){
+    songLine = sLine;
+  }
+  
+  public String toString(){
+    return;
+  }
+  
+  public void process(){
+  }
+}

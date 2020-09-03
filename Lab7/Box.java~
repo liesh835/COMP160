@@ -1,0 +1,65 @@
+/**  
+ * Box.java
+ * Lab 7, COMP160  2019
+ * Shaun Liew
+ */
+
+public class Box{
+  // data fields
+  private int height;
+  private int width;
+  private int length;
+  private static String owner; //static data field for owner
+  
+  public void setHeight(int h){ //mutator for height
+    height = h;
+  }
+  
+  public void setWidth(int w){ //mutator for width
+    width = w;
+  }
+  
+  public void setLength(int l){ //mutator for length
+    length = l;
+  }
+  
+  public static void setName(String o){ //static mutator for owner's name
+    owner = o;
+  }
+  
+  public static String getName(){ // static accessir for owner's name
+    return owner;
+  }
+  
+  public int getSurfaceArea(){ //accessor for surface area
+    return (height * length * 2) + (height * width * 4);
+  }
+  
+  public int getVolume(){ //accessor for volume
+    return height * length * width; 
+  }
+  
+  public String toString(){ //toString method
+    return "The height is : " + height + ",\nThe length is : " + length + ",\nThe width is : " + width + ",\nThe volume is : " + getVolume() + 
+      ",\nThe surface area is : " + getSurfaceArea() + ".\nOwned by " + owner +".\n";
+  }
+  
+  public Box(int h, int w, int l){ //constructor taking three parameters
+    height = h;
+    width = w;
+    length = l;
+  }
+  
+  public Box(){} //default constructor replacement
+  
+  public Box(int side){ // if box was cube - all sides are equal
+    height = side;
+    length = side;
+    width = side;
+  }
+  
+}
+
+
+
+

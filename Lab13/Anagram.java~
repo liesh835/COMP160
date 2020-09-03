@@ -1,0 +1,20 @@
+import java.util.Scanner;
+/**
+ * Anagram.java
+ * COMP160 Lab 13 2019
+ */
+
+public class Anagram{
+  
+  public static void main(Sting [] args){
+    
+    Scanner sc = new Scanner(System.in); 
+    System.out.println("Enter first phrase");
+    String phrase1 = sc.nextLine();
+    phrase1.toLowerCase();
+    String empty;
+    for(char ch >= 'a'; ch <= 'z'){
+      for(int x = 0; x < phrase1.length(); x++)
+    }
+  }
+           

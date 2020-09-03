@@ -1,0 +1,22 @@
+import java.util.Scanner;
+/**
+ * ProjectApp.java
+ * COMP160 Lab 12 2019
+ */
+
+public class ProjectApp{
+  
+  public static void main(String[] args){
+    int i = 2;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter an integer greater than 1");
+    int input = scan.nextInt();
+    if(input >= 2){
+      
+      
+    }else{
+      System.out.println("Input value must not be less than 2");
+    
+    }
+  }
+}

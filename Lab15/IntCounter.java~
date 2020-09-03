@@ -1,0 +1,24 @@
+/**
+ * IntCounter.java
+ * Lab 15 2019
+ */
+
+public class IntCounter{
+  private int[]numArray;
+  
+  public IntCounter(int[]numArray){
+    this.numArray = numArray;
+    for(int x:numArray){
+      System.out.print(x + " ");
+    }
+    System.out.print("Array is of length " + numArray.length + "\n");
+  }
+  
+  public void showTarget(int target){
+    for(int i = 0; i < numArray.length; i++){
+      if(numArray[i] == target){
+        System.out.println("\nThere is a " + target + " in position " + i);
+      }else System.out.println("\nThere are no " + target + "'s found in this array");
+    }
+  }
+}

@@ -1,0 +1,10 @@
+import java.util.Scanner;
+/**
+ * Part2App.java
+ * COMP160 Lab 12 2019
+ */
+
+public class Part2App{
+  
+  /** main method */
+  public static void main(String[] args){

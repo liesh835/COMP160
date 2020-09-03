@@ -1,0 +1,13 @@
+/** 
+ * SongApp.java
+ * COMP160 2019 Lab 11
+ */
+
+public class SongApp{
+  
+  public static void main(String [] args){
+    Song song1 = new Song("While my guitar gently weeps.");
+    song1.toString();
+    song1.process();
+  }
+}

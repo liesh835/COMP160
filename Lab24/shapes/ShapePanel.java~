@@ -1,0 +1,126 @@
+package shapes;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+/**
+ * ShapePanel.java
+ * COMP160 Lab 24
+ */
+
+public class ShapePanel extends JPanel{
+  /** data fields */
+  private ArrayList<Shape> shapes = new ArrayList<Shape>(); 
+  private JButton [] shapeButtons = new JButton [8];
+  private JLabel countLabel;
+  private JTextField showNum;
+  private JPanel controlPanel;
+  private DrawingPanel drawPanel;
+  private Shape shape;
+  private int count;
+  private Timer timer;
+  private final int DELAY = 10;
+  
+  /** constructor - creating and adding objects */
+  public ShapePanel(){
+    setLayout(new BorderLayout());
+    countLabel = new JLabel("Remove which?");
+    showNum = new JTextField(2);
+    controlPanel = new JPanel();
+    drawPanel = new DrawingPanel();
+    shape = new Circle();
+    shapeButtons [0] = new JButton ("Circle");
+    shapeButtons [1] = new JButton ("Square");
+    shapeButtons [2] = new JButton ("Oval");
+    shapeButtons [3] = new JButton ("Smiley");
+    shapeButtons [4] = new JButton ("Swirl");
+    shapeButtons [5] = new JButton ("Start");
+    shapeButtons [6] = new JButton ("Stop"); 
+    shapeButtons [7] = new JButton ("Remove"); 
+    ButtonListener b = new ButtonListener();
+    timer = new Timer(DELAY, b);
+    setPreferredSize(new Dimension(500, 400)); 
+    controlPanel.setPreferredSize(new Dimension(100, 400));
+    
+    /** for each loop to add each JButton in array to a listener and the control panel */
+    for(JButton jbuttons: shapeButtons){
+      jbuttons.addActionListener(b);
+      controlPanel.add(jbuttons);       
+    }
+    
+    controlPanel.setBackground(Color.gray);
+    controlPanel.add(countLabel);
+    controlPanel.add(showNum);
+    add(controlPanel, BorderLayout.WEST);
+    add(drawPanel, BorderLayout.CENTER);  
+    
+  }
+  
+  /** drawing panel - called to draw shapes */
+  private class DrawingPanel extends JPanel{
+    public void paintComponent(Graphics g){
+      super.paintComponent(g);
+      for(int i = 0; i < count; i++){ // to draw shapes
+        (shapes.get(i)).display(g);
+        (shapes.get(i)).showIndex(g, i);
+      }
+    }
+    
+    /** constructor to set DrawingPanel size and background */
+    public DrawingPanel(){
+      setPreferredSize(new Dimension(400, 400));
+      setBackground(Color.white);
+    }
+  }
+  /** creating events - for adding shapes */
+  private class ButtonListener implements ActionListener{
+    public void actionPerformed(ActionEvent e){
+      
+      if(e.getSource() == timer){ //calls move method on shapes
+        for(int t = 0; t < count; t++){
+          shapes.get(t).move(); 
+        }
+      }else{
+        JButton button = (JButton) e.getSource();
+        if(button.getText().equals("Circle")){ //adds a new circle each time Circle is clicked
+          shapes.add(new Circle());
+          count++;
+          showNum.setText(Integer.toString(shapes.size() - 1)); //displays number of shapes
+        }else if(button.getText().equals("Square")){ //adds a new square each time Square is clicked
+          shapes.add(new Square());;
+          count++;
+          showNum.setText(Integer.toString(shapes.size() - 1)); //displays number of shapes
+        }else if(button.getText().equals("Oval")){ //adds a new oval each time Oval is clicked
+          shapes.add(new Oval());
+          count++;         
+          showNum.setText(Integer.toString(shapes.size() - 1)); //displays number of shapes
+        }else if(button.getText().equals("Smiley")){ //adds a new smiley each time Smiley is clicked
+          shapes.add(new Smiley());
+          count++;
+          showNum.setText(Integer.toString(shapes.size() - 1)); //displays number of shapes
+        }else if(button.getText().equals("Swirl")){ //adds a new swirl each time Swirl is clicked
+          shapes.add(new Swirl());
+          count++;
+          showNum.setText(Integer.toString(shapes.size() - 1)); //displays number of shapes
+        }else if(button.getText().equals("Stop")){ // to stop timer
+          timer.stop();
+        }else if(button.getText().equals("Start")){ //to start timer
+          timer.start();
+        }else if(button.getText().equals("Remove")){ //to remove shapes from array
+          try{ // try .. catch to allow user to remove all shapes in program
+            int jfield = Integer.parseInt(showNum.getText());
+            shapes.remove(jfield);
+            count--;
+            showNum.setText(Integer.toString(shapes.size() - 1));
+          }catch(NumberFormatException exception){
+          }catch(IndexOutOfBoundsException exception){
+          }
+        }
+      }
+      if(shapes.size() == 0){ //to display a blank rather than "-1" in JTextField
+        showNum.setText("");
+      }
+      repaint(); //repaint method
+    }
+  }
+}

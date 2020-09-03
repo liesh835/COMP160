@@ -1,0 +1,41 @@
+import java.util.Scanner;
+/**
+ * Fruits.java
+ * Lab 16 part 1
+ */
+
+public class Fruits{
+  
+  public static void main (String [] args){
+    String [] fruits = new String [3];
+    Scanner sc = new Scanner(System.in);   //creating scanner
+    Scanner sc2 = new Scanner(System.in);
+    for(int x = 0; x < 3; x++){
+      
+      System.out.println("\nPlease enter a fruit");
+      String input = sc.nextLine();
+      fruits[x] = input;
+    }
+    
+    boolean b = false;
+    for(String fr:fruits){
+      do{
+        String twoLet = fr.substring(0, 2);
+        System.out.print("Guess what fruit I am? " + twoLet + "\t" + fr.length() + " letters");
+        String input2 = sc2.nextLine();
+        
+        if(input2.equals(fr)){
+          System.out.println("Correct");
+          b = true;
+        }else{
+          System.out.println("Try Again");
+          b = false; 
+        }
+      }while(b != true);
+    }
+    sc.close();
+    sc2.close(); 
+  } 
+}
+
+
